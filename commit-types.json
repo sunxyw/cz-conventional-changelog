@@ -1,48 +1,48 @@
 {
   "types": {
-    "featx": {
-      "description": "A new feature",
-      "title": "Features"
+    "功能": {
+      "description": "一个新的功能",
+      "title": "功能"
     },
-    "fix": {
-      "description": "A bug fix",
-      "title": "Bug Fixes"
+    "修复": {
+      "description": "修复一个 BUG",
+      "title": "BUG 修复"
     },
-    "docs": {
-      "description": "Documentation only changes",
-      "title": "Documentation"
+    "文档": {
+      "description": "只影响文档的更改",
+      "title": "文档"
     },
-    "style": {
-      "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
-      "title": "Styles"
+    "格式": {
+      "description": "空格、分号等格式修复，不影响实际代码",
+      "title": "格式"
     },
-    "refactor": {
-      "description": "A code change that neither fixes a bug nor adds a feature",
-      "title": "Code Refactoring"
+    "重构": {
+      "description": "介于修复 BUG 和新功能之间",
+      "title": "代码重构"
     },
-    "perf": {
-      "description": "A code change that improves performance",
-      "title": "Performance Improvements"
+    "性能": {
+      "description": "提升性能的更改",
+      "title": "性能优化"
     },
-    "test": {
-      "description": "Adding missing tests or correcting existing tests",
-      "title": "Tests"
+    "测试": {
+      "description": "添加新测试或修改已有测试",
+      "title": "测试"
     },
-    "build": {
-      "description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
-      "title": "Builds"
+    "构建": {
+      "description": "影响构建系统或工具的更改（如 NPM、Gulp 等）",
+      "title": "构建"
     },
-    "ci": {
-      "description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
-      "title": "Continuous Integrations"
+    "CI": {
+      "description": "影响 CI 配置文件或脚本的更改（如 Travis、Circle 等）",
+      "title": "持续集成"
     },
-    "chore": {
-      "description": "Other changes that don't modify src or test files",
-      "title": "Chores"
+    "杂项": {
+      "description": "不影响实际代码和测试的更改",
+      "title": "杂项"
     },
-    "revert": {
-      "description": "Reverts a previous commit",
-      "title": "Reverts"
+    "回滚": {
+      "description": "回滚至过去的提交",
+      "title": "回滚"
     }
   }
 }
