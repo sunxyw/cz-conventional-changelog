@@ -72,15 +72,14 @@ module.exports = function(options) {
         {
           type: 'list',
           name: 'type',
-          message: "Select the type of change that you're committing:",
+          message: '选择提交类型：',
           choices: choices,
           default: options.defaultType
         },
         {
           type: 'input',
           name: 'scope',
-          message:
-            'What is the scope of this change (e.g. component or file name): (press enter to skip)',
+          message: '提交作用域：（回车以跳过）',
           default: options.defaultScope,
           filter: function(value) {
             return options.disableScopeLowerCase
@@ -93,23 +92,23 @@ module.exports = function(options) {
           name: 'subject',
           message: function(answers) {
             return (
-              'Write a short, imperative tense description of the change (max ' +
+              '提交主题： （最多 ' +
               maxSummaryLength(options, answers) +
-              ' chars):\n'
+              ' 个字符）：\n'
             );
           },
           default: options.defaultSubject,
           validate: function(subject, answers) {
             var filteredSubject = filterSubject(subject);
             return filteredSubject.length == 0
-              ? 'subject is required'
+              ? '请填写提交主题！'
               : filteredSubject.length <= maxSummaryLength(options, answers)
               ? true
-              : 'Subject length must be less than or equal to ' +
+              : '提交主题必须小于或等于 ' +
                 maxSummaryLength(options, answers) +
-                ' characters. Current length is ' +
+                ' 个字符。 当前为： ' +
                 filteredSubject.length +
-                ' characters.';
+                ' 个字符。';
           },
           transformer: function(subject, answers) {
             var filteredSubject = filterSubject(subject);
@@ -126,36 +125,33 @@ module.exports = function(options) {
         {
           type: 'input',
           name: 'body',
-          message:
-            'Provide a longer description of the change: (press enter to skip)\n',
+          message: '详细描述：（回车以跳过）\n',
           default: options.defaultBody
         },
         {
           type: 'confirm',
           name: 'isBreaking',
-          message: 'Are there any breaking changes?',
+          message: '是否为非兼容性更改：',
           default: false
         },
         {
           type: 'input',
           name: 'breakingBody',
           default: '-',
-          message:
-            'A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself:\n',
+          message: '非兼容性更改必须包含详细描述，请填写详细描述：\n',
           when: function(answers) {
             return answers.isBreaking && !answers.body;
           },
           validate: function(breakingBody, answers) {
             return (
-              breakingBody.trim().length > 0 ||
-              'Body is required for BREAKING CHANGE'
+              breakingBody.trim().length > 0 || '非兼容性更改必须包含详细描述'
             );
           }
         },
         {
           type: 'input',
           name: 'breaking',
-          message: 'Describe the breaking changes:\n',
+          message: '描述非兼容性更改：\n',
           when: function(answers) {
             return answers.isBreaking;
           }
@@ -164,15 +160,14 @@ module.exports = function(options) {
         {
           type: 'confirm',
           name: 'isIssueAffected',
-          message: 'Does this change affect any open issues?',
+          message: '是否影响任意 Issue ？',
           default: options.defaultIssues ? true : false
         },
         {
           type: 'input',
           name: 'issuesBody',
           default: '-',
-          message:
-            'If issues are closed, the commit requires a body. Please enter a longer description of the commit itself:\n',
+          message: '如果 Issue 已关闭，则必须提供详细描述：\n',
           when: function(answers) {
             return (
               answers.isIssueAffected && !answers.body && !answers.breakingBody
@@ -182,7 +177,7 @@ module.exports = function(options) {
         {
           type: 'input',
           name: 'issues',
-          message: 'Add issue references (e.g. "fix #123", "re #123".):\n',
+          message: '填写关联的 Issue 编号（如"fix #123"、"re #123"）：\n',
           when: function(answers) {
             return answers.isIssueAffected;
           },
@@ -209,7 +204,7 @@ module.exports = function(options) {
         // Apply breaking change prefix, removing it if already present
         var breaking = answers.breaking ? answers.breaking.trim() : '';
         breaking = breaking
-          ? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '')
+          ? '非兼容性更改：' + breaking.replace(/^非兼容性更改：/, '')
           : '';
         breaking = breaking ? wrap(breaking, wrapOptions) : false;
 
