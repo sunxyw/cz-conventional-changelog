@@ -43,7 +43,7 @@ module.exports = function(options) {
   var length = longest(Object.keys(types)).length + 1;
   var choices = map(types, function(type, key) {
     return {
-      name: rightPad(key + ':', length) + ' ' + type.description,
+      name: rightPad(key + '：', length) + type.description,
       value: key
     };
   });
